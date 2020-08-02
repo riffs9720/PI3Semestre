@@ -1,0 +1,42 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@page import="model.Empresa" %>
+<%@page import="dao.EmpresaDAO" %>
+<%@page import="java.util.ArrayList" %>
+
+<% 
+	EmpresaDAO dao = new EmpresaDAO();
+	
+	ArrayList<Empresa> lista;
+	
+	lista = dao.carregara();
+%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Lista de Empresas</title>
+</head>
+<body>
+
+<table>
+<spam>
+		<tr>
+			<th>Nome da Empresa</th>
+			<th>Endereço</th>
+		</tr>
+		<%
+			for(Empresa registro: lista){
+		%>
+		<tr>
+			<a href="login.jsp"><th><%= registro.getNome() %></th></a>
+			<th><%= registro.getEndereco() %></th>
+		<%
+			}
+		%>
+		</tr>
+		</spam>
+	</table>
+</body>
+</html>
